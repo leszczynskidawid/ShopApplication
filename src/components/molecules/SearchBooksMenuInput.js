@@ -2,6 +2,8 @@ import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import { SEARCH_ICON } from "../icons/icons";
 import styled from "styled-components";
+import device from "../../assets/device/device";
+import Colors from "theme/Colors";
 
 const StyledSearchInputContainer = styled.div`
   width: 500px;
@@ -13,10 +15,17 @@ const StyledSearchInputContainer = styled.div`
     border-radius: 10px 0 0 10px;
   }
   & > button {
-    flex: 1;
+    flex-grow: 1;
     border: none;
     border-radius: 0 10px 10px 0;
-    background-color: grey;
+    background-color:${Colors.GREY_DARK}
+  }
+  @media ${device.tablet} {
+    & {
+      width:300px;
+      
+    }
+   
   }
 `;
 
