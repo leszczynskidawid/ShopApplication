@@ -1,21 +1,21 @@
 import styled from "styled-components";
+import Colors from "theme/Colors";
+import { FontTheme } from "theme/fonts";
 
 const StyledLogo = styled.div`
   height: 100%;
-  width: 10%;
-  text-align: center;
-  font-size: 1.5rem;
+  font-size: ${FontTheme.h4};
 
   & > a {
    
     letter-spacing: 0.2rem;
-    font-weight: bold;
+    font-weight: 900;
     text-decoration: none;
-    color: #fff;
+    color: ${Colors.GREY};
   }
 
   & > a:hover {
-    color: #999;
+    color: ${Colors.GREY_DARK};
   }
 `;
 function Logo() {

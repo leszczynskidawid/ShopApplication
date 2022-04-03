@@ -1,15 +1,10 @@
-import Nav from './organisms/Nav';
-import '../style/App.css';
-
-
-
-
+import Header from "./organisms/Header";
+import Nav from "./organisms/Nav";
 function App() {
   return (
-    <div className="App" >
-
-      <Nav/>
-   
+    <div  className="App">
+      <Nav />
+      <Header/>
     </div>
   );
 }
