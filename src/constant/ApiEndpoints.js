@@ -1,6 +1,3 @@
-
-
-export const ApiEndpoints = { 
-    FETCH_BOOKS: "svc/books/v3/lists/current/hardcover-fiction.json",
-
-}
+export const ApiEndpoints = {
+  FETCH_BOOKS_URL: "svc/books/v3/lists/names.json",
+};

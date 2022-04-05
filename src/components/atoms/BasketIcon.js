@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Colors from "theme/Colors";
 import { FontTheme } from "theme/fonts";
 
-
 const StyledIconWrapper = styled.div`
   float: left;
   position: relative;
@@ -15,7 +14,7 @@ const StyledIcon = styled.div`
   vertical-align: middle;
   margin-right: 24px;
   font-size: ${FontTheme.h4};
-  color:${Colors.GREY};
+  color: ${Colors.GREY};
 `;
 const StyledBadgeIcon = styled.span`
   position: absolute;
@@ -30,8 +29,6 @@ const StyledBadgeIcon = styled.span`
 `;
 
 function BasketIcon() {
-
-
   return (
     <StyledIconWrapper>
       <StyledIcon>

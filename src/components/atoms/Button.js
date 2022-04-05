@@ -3,14 +3,16 @@ import Colors from "theme/Colors";
 
 const StyledButton = styled.button`
   text-transform: uppercase;
-  background-color: #fff;
+  padding: 5px 10px;
+  border: none;
+  background-color: ${props => (props.primary ? Colors.GREY : Colors.ORANGE)};
+  border-radius: 5px;
 
   &:hover {
-    color: ${Colors.WHITE};
-    background-color: ${Colors.GREY};
+    color: ${Colors.GREY};
   }
 `;
-function Button({  icon, title }) {
+function Button({ icon, title }) {
   return (
     <StyledButton>
       {icon} <span>{title}</span>

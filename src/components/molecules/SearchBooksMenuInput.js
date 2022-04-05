@@ -18,14 +18,12 @@ const StyledSearchInputContainer = styled.div`
     flex-grow: 1;
     border: none;
     border-radius: 0 10px 10px 0;
-    background-color:${Colors.GREY_DARK}
+    background-color: ${Colors.GREY_DARK};
   }
   @media ${device.tablet} {
     & {
-      width:300px;
-      
+      width: 300px;
     }
-   
   }
 `;
 
