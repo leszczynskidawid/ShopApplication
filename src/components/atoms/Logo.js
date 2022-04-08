@@ -7,7 +7,6 @@ const StyledLogo = styled.div`
   font-size: ${FontTheme.h4};
 
   & > a {
-   
     letter-spacing: 0.2rem;
     font-weight: 900;
     text-decoration: none;

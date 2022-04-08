@@ -10,18 +10,15 @@ const StyledNav = styled.nav`
   background-color: ${Colors.BLACK};
 `;
 const StyledNavBarList = styled.div`
-
   height: 100%;
   margin: auto;
   display: flex;
   justify-content: space-between;
   padding: 20px 100px;
 
-
-
   @media ${device.tablet} {
     & {
-     //zmienić padiing 
+      //zmienić padiing
     }
   }
 `;

@@ -17,9 +17,6 @@ const StyledContainerSlider = styled.div`
   background-image: url(${props => props.img});
 `;
 
-
-
-
 const slider = images.map((image, index) => (
   <StyledContainerSlider key={index} img={image} />
 ));
@@ -27,7 +24,7 @@ const slider = images.map((image, index) => (
 function Slider() {
   return (
     <div>
-      <Slide   easing="ease">{slider}</Slide>
+      <Slide easing="ease">{slider}</Slide>
     </div>
   );
 }
