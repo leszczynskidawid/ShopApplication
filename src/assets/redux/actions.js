@@ -1,6 +1,6 @@
 export const FETCH_BOOKS = "FETCH_BOOKS";
 export const ERROR_FETCH_BOOKS = "ERROR_FETCH_BOOKS";
-export const LOADING_FETCH_BOOKS = "FETCH_BOOKS";
+export const LOADING_FETCH_BOOKS = "LOADING_FETCH_BOOKS";
 
 export const ApConnect = {
   KEY: "X6TyMgzQpaZ1zGD7CXMGwdOa6tGhv8PY",
@@ -29,13 +29,12 @@ const errorMsgFetchBooks = error => {
 };
 
 export const getDataBooks = async dispatch => {
-  try {
-    loadingDataBooks();
+     dispatch(loadingDataBooks());
     const response = await fetch(`${ApConnect.BASE_URL}`);
     const json = await response.json();
     dispatch(fetchBooks(json.results));
-  } catch (error) {
-    loadingDataBooks();
-    dispatch(errorMsgFetchBooks(error));
-  }
+
+ 
+
+
 };

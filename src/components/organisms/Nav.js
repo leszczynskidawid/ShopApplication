@@ -8,6 +8,8 @@ import device from "assets/device/device";
 const StyledNav = styled.nav`
   width: 100%;
   background-color: ${Colors.BLACK};
+
+
 `;
 const StyledNavBarList = styled.div`
   height: 100%;

@@ -7,25 +7,34 @@ const defaultStore = {
 
 export const reducerBooks = (state = defaultStore, action) => {
   switch (action.type) {
+   
     case FETCH_BOOKS:
       return {
-        loadingData: false,
-        books: action.books,
+       
+        books:action.books,
         errorMsg: "",
-      };
-    case LOADING_FETCH_BOOKS:
-      return {
-        loadingData: true,
-        books: [],
-        errorMsg: "",
-      };
-    case ERROR_FETCH_BOOKS:
-      return {
-        loadingData: false,
-        books: [],
-        errorMsg: action.error,
-      };
+       loadingData:false,
 
+
+      };
+      case LOADING_FETCH_BOOKS:
+        return{
+          loadingData: true,
+          books:[], 
+          errorMsg:"" 
+         
+          
+           
+        }
+          case ERROR_FETCH_BOOKS: 
+          return{
+            
+          
+              loadingData:true, 
+      
+          }
+         
+            
     default: {
       return state;
     }

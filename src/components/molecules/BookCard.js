@@ -6,7 +6,7 @@ import BooksList from "components/organisms/BooksList";
 import { FontTheme } from "theme/fonts";
 
 const StyledBookCard = styled.div`
-  border: 0.9px solid ${Colors.GREY};
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +14,11 @@ const StyledBookCard = styled.div`
   width: 220px;
   height: 270px;
   text-align: center;
+ cursor: pointer;
+ &:hover{
+   transform:scale(1.1);
+   opacity: 0.8;
+ }
 `;
 const StyledImgBook = styled.img`
   width: 100px;
