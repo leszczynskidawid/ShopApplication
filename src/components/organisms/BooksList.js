@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { getDataBooks } from "assets/redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import SpinerLoading from "components/atoms/SpinnerLoading";
 
 const StyledConteinerBooksList = styled.ul`
   display: flex;
@@ -24,6 +25,7 @@ function BooksList({ title, data }) {
   const booksStateFetched = useSelector(state => state);
   const { loadingData, books, errorMsg } = booksStateFetched;
 
+  console.log(booksStateFetched);
   useEffect(() => {
     dipsatchBooks(getDataBooks);
   }, []);
@@ -56,13 +58,18 @@ function BooksList({ title, data }) {
     <main>
       <section>
         <StyledTitleCategorySection>dla dzieci</StyledTitleCategorySection>
+
         <StyledConteinerBooksList>
+          {loadingData ? <SpinerLoading /> : null}
           {DisplayFilteredBooks(searchBooksforChildrenSection())}
         </StyledConteinerBooksList>
       </section>
+
       <section>
         <StyledTitleCategorySection>Popularne teraz</StyledTitleCategorySection>
+
         <StyledConteinerBooksList>
+          {loadingData ? <SpinerLoading /> : null}
           {DisplayFilteredBooks(searchBooksforPopularSection())}
         </StyledConteinerBooksList>
       </section>

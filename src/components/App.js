@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 function App() {
   console.log(store);
   return (
-    <div className="App">
+    <div className="App" style={{position:"relative"}}>
       <Provider store={store}>
         <Nav />
         <Header />
