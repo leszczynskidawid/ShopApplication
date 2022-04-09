@@ -1,9 +1,8 @@
 import Button from "components/atoms/Button";
 import styled from "styled-components";
-
 import { getRandomIntInclusive } from "helpers/RandomNumberPrice";
-
 import { FontTheme } from "theme/fonts";
+import { buttonlabels } from "constant/plLabels";
 
 const StyledBookCard = styled.div`
   display: flex;
@@ -14,7 +13,10 @@ const StyledBookCard = styled.div`
   height: 270px;
   text-align: center;
   cursor: pointer;
-
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 `;
 const StyledImgBook = styled.img`
   width: 100px;
@@ -25,26 +27,25 @@ const StyledImgBook = styled.img`
 const StyledParagraph = styled.p`
   font-size: ${FontTheme.h6};
 `;
-const StyledInformationAboutBookContainer = styled.div`
+
+const StyledInformationBooksContainer = styled.div`
   flex: 2;
 `;
 
 function BookCard({ dataBooks }) {
-  const { title } = dataBooks;
-
-
+  const { title, formats, authors } = dataBooks;
 
   return (
     <StyledBookCard>
-      <StyledImgBook src={dataBooks.formats["image/jpeg"]} alt="photo" />
+      <StyledImgBook src={formats["image/jpeg"]} alt="photo" />
 
-      <StyledInformationAboutBookContainer >
+      <StyledInformationBooksContainer>
         <h5>{title}</h5>
-        <StyledParagraph>{dataBooks.authors[0]["name"]}</StyledParagraph>
+        <StyledParagraph>{authors[0]["name"]}</StyledParagraph>
         <h5>{getRandomIntInclusive(0, 150)} zł</h5>
-      </StyledInformationAboutBookContainer>
+      </StyledInformationBooksContainer>
 
-      <Button title="do koszyka" />
+      <Button title={buttonlabels.labelAddBasket} />
     </StyledBookCard>
   );
 }

@@ -1,30 +1,31 @@
 import {
-  FETCH_BOOKS_SUCCESS,
+  SUCCESS_FETCH_DATA,
   LOADING_FETCH_BOOKS,
-  FETCH_BOOKS_FAILURE,
+  FAILURE_FETCH_DATA,
 } from "./actions";
 const defaultStore = {
-  isloadingData: false,
+  isLoadingData: false,
   books: [],
   errorMsg: "",
 };
 
 export const reducerBooks = (state = defaultStore, action) => {
   switch (action.type) {
-    case FETCH_BOOKS_SUCCESS:
+    case SUCCESS_FETCH_DATA:
       return {
-        ...state,
-        isloadingData: false,
         books: action.books,
+        isLoadingData: false,
       };
     case LOADING_FETCH_BOOKS:
       return {
         ...state,
-        isloadingData: true,
+        isLoadingData: true,
       };
-    case FETCH_BOOKS_FAILURE:
+    case FAILURE_FETCH_DATA:
       return {
-        // isloadingData:true,
+        errorMsg: "",
+        ...state,
+      
       };
 
     default: {

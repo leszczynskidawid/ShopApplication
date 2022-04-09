@@ -1,21 +1,17 @@
-import Header from "./organisms/Header";
+import Page from "Pages/Page";
 import store from "assets/redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import "style/App.css";
-import Page from "Pages/Page.js";
-import Footer from "Pages/Foooter";
-import Nav from "./organisms/Nav";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Provider store={store}>
+    <div className="App">
+      <Provider store={store}>
+        <Router>
           <Page />
-        </Provider>
-      </div>
-    </Router>
+        </Router>
+      </Provider>
+    </div>
   );
 }
 

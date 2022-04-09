@@ -1,5 +1,5 @@
-export const FETCH_BOOKS_SUCCESS = "FETCH_BOOKS_SUCCESS";
-export const FETCH_BOOKS_FAILURE = "FETCH_BOOKS_FAILURE";
+export const SUCCESS_FETCH_DATA = "SUCCESS_FETCH_DATA";
+export const FAILURE_FETCH_DATA = "FAILURE_FETCH_DATA";
 export const LOADING_FETCH_BOOKS = "LOADING_FETCH_BOOKS";
 
 export const ApConnect = {
@@ -11,7 +11,7 @@ export const ApConnect = {
 
 const fetchBooks = books => {
   return {
-    type: FETCH_BOOKS_SUCCESS,
+    type: SUCCESS_FETCH_DATA,
     books,
   };
 };
@@ -23,7 +23,7 @@ const loadingDataBooks = () => {
 };
 const errorMsgFetchBooks = error => {
   return {
-    type: FETCH_BOOKS_FAILURE,
+    type: FAILURE_FETCH_DATA,
     error,
   };
 };

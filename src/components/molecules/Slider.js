@@ -14,7 +14,6 @@ const StyledContainerSlider = styled.div`
   background-position: center;
   background-size: cover;
   height: 350px;
-  margin-top:70px; 
   background-image: url(${props => props.img});
 `;
 
