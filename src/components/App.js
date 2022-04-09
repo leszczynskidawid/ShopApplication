@@ -1,21 +1,21 @@
 import Header from "./organisms/Header";
-import Nav from "./organisms/Nav";
-
-import BooksList from "./organisms/BooksList";
-
 import store from "assets/redux/store";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import "style/App.css";
+import Page from "Pages/Page.js";
+import Footer from "Pages/Foooter";
+import Nav from "./organisms/Nav";
 
 function App() {
-  console.log(store);
   return (
-    <div className="App" style={{position:"relative"}}>
-      <Provider store={store}>
-        <Nav />
-        <Header />
-        <BooksList />
-      </Provider>
-    </div>
+    <Router>
+      <div className="App">
+        <Provider store={store}>
+          <Page />
+        </Provider>
+      </div>
+    </Router>
   );
 }
 

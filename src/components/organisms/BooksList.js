@@ -1,40 +1,26 @@
 import BookCard from "components/molecules/BookCard";
 import { useEffect } from "react";
-import styled from "styled-components";
+
 import { getDataBooks } from "assets/redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import SpinerLoading from "components/atoms/SpinnerLoading";
 
-const StyledConteinerBooksList = styled.ul`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px 50px;
-`;
+import SectionCategoryBooks from "./SectionCategoryBooks";
+import { titles } from "constant/pl_en_labels";
 
-const StyledTitleCategorySection = styled.h1`
-  border-bottom: 0.3px solid black;
-  width: 90%;
-  padding: 30px;
-  margin: auto;
-`;
 
-function BooksList({ title, data }) {
-  const dipsatchBooks = useDispatch();
+
+function BooksList() {
+  const fetchBooks = useDispatch();
   const booksStateFetched = useSelector(state => state);
-  const { loadingData, books, errorMsg } = booksStateFetched;
-
-  console.log(booksStateFetched);
+  const { isloadingData, books, errorMsg } = booksStateFetched;
   useEffect(() => {
-    dipsatchBooks(getDataBooks);
+    fetchBooks(getDataBooks);
   }, []);
 
   const searchBooksforChildrenSection = () => {
-    const searchBooksforChildren = books
+    return books
       .filter(books => books.bookshelves[0] === "Children's Literature")
       .slice(0, 5);
-    return searchBooksforChildren;
   };
 
   const searchBooksforPopularSection = () => {
@@ -42,37 +28,21 @@ function BooksList({ title, data }) {
       (prevBook, currentBook) =>
         prevBook.download_count - currentBook.dowload_count
     );
-    const topPopularBooksList = popularBooksArray.slice(0, 5);
+    const topPopularBooksList = popularBooksArray.slice(0, 4);
 
     return topPopularBooksList;
   };
 
-  const DisplayFilteredBooks = filteredArrayBooks => {
-    const book = filteredArrayBooks.map(book => (
+  const displayFilteredBooks = filteredArrayBooks => {
+    return filteredArrayBooks.map(book => (
       <BookCard key={book.id} dataBooks={book}></BookCard>
     ));
-    return book;
   };
 
   return (
     <main>
-      <section>
-        <StyledTitleCategorySection>dla dzieci</StyledTitleCategorySection>
-
-        <StyledConteinerBooksList>
-          {loadingData ? <SpinerLoading /> : null}
-          {DisplayFilteredBooks(searchBooksforChildrenSection())}
-        </StyledConteinerBooksList>
-      </section>
-
-      <section>
-        <StyledTitleCategorySection>Popularne teraz</StyledTitleCategorySection>
-
-        <StyledConteinerBooksList>
-          {loadingData ? <SpinerLoading /> : null}
-          {DisplayFilteredBooks(searchBooksforPopularSection())}
-        </StyledConteinerBooksList>
-      </section>
+      <SectionCategoryBooks data = {displayFilteredBooks(searchBooksforChildrenSection())} isloadingData = {isloadingData}  title= {titles.titleSectionForChild}/>
+      <SectionCategoryBooks data = {displayFilteredBooks(searchBooksforPopularSection())} isloadingData = {isloadingData}  title= {titles.titleSectionMostPopular}/>
     </main>
   );
 }

@@ -4,17 +4,22 @@ import styled from "styled-components";
 import Colors from "theme/Colors";
 import { FontTheme } from "theme/fonts";
 
+import {Link} from "react-router-dom"
 const StyledIconWrapper = styled.div`
   float: left;
   position: relative;
   cursor: pointer;
 `;
+const StyledLink = styled(Link)`
+color: ${Colors.GREY};
+
+`
 const StyledIcon = styled.div`
   text-align: center;
   vertical-align: middle;
   margin-right: 24px;
   font-size: ${FontTheme.h4};
-  color: ${Colors.GREY};
+  
 `;
 const StyledBadgeIcon = styled.span`
   position: absolute;
@@ -28,11 +33,14 @@ const StyledBadgeIcon = styled.span`
   padding: 0 5px;
 `;
 
+
 function BasketIcon() {
   return (
-    <StyledIconWrapper>
-      <StyledIcon>
-        {ICON_BASKET}
+    <StyledIconWrapper >
+      <StyledIcon >
+      <StyledLink to = "/basket">
+      {ICON_BASKET}
+      </StyledLink>  
         <StyledBadgeIcon>99</StyledBadgeIcon>
       </StyledIcon>
     </StyledIconWrapper>

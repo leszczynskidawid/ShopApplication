@@ -1,6 +1,18 @@
+import Slider from "components/molecules/Slider";
+import BooksList from "components/organisms/BooksList";
+import Nav from "components/organisms/Nav";
+import Footer from "./Foooter";
+
 function Home() {
     return (  
-        <div></div>
+      <>
+        <Nav/>
+        <Slider/>
+        <BooksList/>
+        <Footer/>
+
+      </>
+
     );
 }
 
