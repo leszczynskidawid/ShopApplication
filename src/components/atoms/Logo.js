@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Colors from "theme/Colors";
 import { FontTheme } from "theme/fonts";
@@ -20,7 +21,7 @@ const StyledLogo = styled.div`
 function Logo() {
   return (
     <StyledLogo>
-      <a href="home">Books</a>
+<Link to = "/">Books</Link>
     </StyledLogo>
   );
 }

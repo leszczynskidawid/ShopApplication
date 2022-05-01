@@ -1,50 +1,96 @@
 import Button from "components/atoms/Button";
 import styled from "styled-components";
-import Colors from "theme/Colors";
 import { getRandomIntInclusive } from "helpers/RandomNumberPrice";
-import BooksList from "components/organisms/BooksList";
 import { FontTheme } from "theme/fonts";
+import { buttonlabels } from "constant/plLabels";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addBookToBasketCart } from "assets/redux/reduxCartBasket/ActionCartBasket";
+import { useState,} from "react";
 
-const StyledBookCard = styled.div`
+import { ToastContainer} from 'react-toastify';
+import { notifySucces } from "./Toasts";
 
+
+
+const StyledBookCard = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px;
   width: 220px;
-  height: 270px;
+  height:  270px;
   text-align: center;
- cursor: pointer;
- &:hover{
-   transform:scale(1.1);
-   opacity: 0.8;
- }
+  cursor: pointer;
+
 `;
+
+
+
+
+
+
+
 const StyledImgBook = styled.img`
   width: 100px;
   height: 150px;
   margin-bottom: 10px;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  flex: 2;
 `;
 
 const StyledParagraph = styled.p`
   font-size: ${FontTheme.h6};
 `;
 
-function BookCard({ dataBooks }) {
-  const { title } = dataBooks;
 
-  console.log();
+
+function BookCard({ dataBooks, disabled }) {
+  const { title, formats, authors, price , id } = dataBooks;
+
+  const addDispatch = useDispatch();
+  const [buttonDisable, setButtonDisable] = useState(false);
+
+  
+
+
+
+  const handleAddProductIntoBasket = () => {
+
+
+    if (!disabled) {
+      addDispatch(addBookToBasketCart(dataBooks));
+      setButtonDisable(false);
+      notifySucces(`${title}, added into basket`)
+
+    }
+  };
+
+
+
+
+  
+
   return (
     <StyledBookCard>
-      <StyledImgBook src={dataBooks.formats["image/jpeg"]} alt="photo" />
-
-      <div style={{ flex: 2 }}>
+    
+   
+      <StyledLink to={`/${id}`}>
+        <StyledImgBook src={formats["image/jpeg"]} alt="photo" />
         <h5>{title}</h5>
-        <StyledParagraph>{dataBooks.authors[0]["name"]}</StyledParagraph>
-        <h5>{getRandomIntInclusive(0, 150)} zł</h5>
-      </div>
-
-      <Button title="do koszyka" />
+        <StyledParagraph>{authors[0]["name"]}</StyledParagraph>
+        <h5>{price} zł</h5>
+      </StyledLink>
+      <Button
+        title={disabled ? "W KOszyku" : buttonlabels.labelAddBasket}
+        click={handleAddProductIntoBasket}
+        disabled={disabled ? !buttonDisable : buttonDisable}
+       
+      />
+       <ToastContainer/>
+    
     </StyledBookCard>
   );
 }

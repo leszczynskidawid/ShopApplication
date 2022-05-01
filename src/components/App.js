@@ -1,22 +1,22 @@
-import Header from "./organisms/Header";
-import Nav from "./organisms/Nav";
-
-import BooksList from "./organisms/BooksList";
-
+import Page from "Pages/Page";
 import store from "assets/redux/store";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
-  console.log(store);
   return (
-    <div className="App" style={{position:"relative"}}>
+    <div className="App" style={{display:"flex" ,flexDirection: "column" }}>
+
       <Provider store={store}>
-        <Nav />
-        <Header />
-        <BooksList />
+ 
+        <Router>
+   
+          <Page />
+     
+        </Router>
+      
       </Provider>
     </div>
   );
 }
-
 export default App;
