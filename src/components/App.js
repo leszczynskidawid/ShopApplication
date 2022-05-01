@@ -5,14 +5,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{display:"flex" ,flexDirection: "column" }}>
+
       <Provider store={store}>
+ 
         <Router>
+   
           <Page />
+     
         </Router>
+      
       </Provider>
     </div>
   );
 }
-
 export default App;

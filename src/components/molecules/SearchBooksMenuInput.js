@@ -4,7 +4,15 @@ import { SEARCH_ICON } from "../icons/icons";
 import styled from "styled-components";
 import device from "../../assets/device/device";
 import Colors from "theme/Colors";
+import InputDataListSearch from "./InputDataListSearch";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getFilteredBooks } from "helpers/getFilteredBooks";
 
+
+const Wrapper = styled.div`
+position:relative
+`
 const StyledSearchInputContainer = styled.div`
   width: 500px;
   display: flex;
@@ -28,11 +36,43 @@ const StyledSearchInputContainer = styled.div`
 `;
 
 function SearchBooksMenuInput() {
+
+
+  
+  const [value, setValue] = useState("")
+  const [isOpen, setIsopen] = useState(false)
+
+  const booksStateFetched = useSelector(state => state.reducerBooks.books); 
+
+  useEffect(()=>
+  {
+    if(getFilteredBooks(value, booksStateFetched ) === 0 || value.length === 0 )
+    {
+      setIsopen(false)
+    }
+    else{
+      setIsopen(true)
+    }
+
+  },[value])
+
+  const handleOnChangeInput = (e) => {
+
+    setValue(e.currentTarget.value)
+ 
+
+  
+  
+  };
   return (
+    <Wrapper>
     <StyledSearchInputContainer>
-      <Input placeholder="szukaj...." />
+      <Input placeholder="szukaj...." list = "list" onChange = {handleOnChangeInput}  value = {value} />
       <Button icon={SEARCH_ICON} />
+  
     </StyledSearchInputContainer>
+    {isOpen && <InputDataListSearch list= "list" books = {getFilteredBooks(value, booksStateFetched )}/>}
+    </Wrapper>
   );
 }
 
